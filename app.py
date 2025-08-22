@@ -22,7 +22,7 @@ sections = {
 }
 
 # Streamlit UI
-st.title("📑 PDF Appraisal Report Viewer")
+st.title("📑 PDF Appraisal Report Viewer:")
 
 uploaded_file = st.file_uploader("Upload your Appraisal PDF", type=["pdf"])
 
