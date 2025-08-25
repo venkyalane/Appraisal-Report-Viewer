@@ -1,5 +1,6 @@
 import streamlit as st
 import pdfplumber
+import pandas as pd
 
 # Function to read PDF
 def read_pdf(file):
@@ -44,6 +45,20 @@ if uploaded_file:
             st.subheader(section)
             keyword = sections[section]
             start = pdf_text.find(keyword)
+
+st.title('st.file_uploader')
+
+st.subheader('Input CSV')
+uploaded_file = st.file_uploader("Choose a file")
+
+if uploaded_file is not None:
+  df = pd.read_csv(uploaded_file)
+  st.subheader('DataFrame')
+  st.write(df)
+  st.subheader('Descriptive Statistics')
+  st.write(df.describe())
+else:
+  st.info('☝️ Upload a CSV file')
             if start != -1:
                 st.text(pdf_text[start:start+2500])  # show snippet
             else:
